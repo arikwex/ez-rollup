@@ -39,6 +39,7 @@ node -e '
     const pkg = JSON.parse(fs.readFileSync("package.json"));
     Object.assign(pkg, pkgNewContent);
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2));
+    console.log("(merged) package.json");
   }
 
   const copyFile = async (file) => {
@@ -50,17 +51,16 @@ node -e '
   }
 
   const runner = async () => {
-    const promises = [];
-    promises.push(mergePackage());
+    await mergePackage();
     [
+      ".nvmrc",
       "rollup.config.js",
       "client/index.html",
       "client/scripts/main.js",
       "server/index.js",
       "server/logger.js",
       "server/app/router.js",
-    ].forEach((file) => { promises.push(copyFile(file)); });
-    await Promise.all(promises);
+    ].forEach(async (file) => { await copyFile(file); });
   }
   runner();
 '
