@@ -53,6 +53,7 @@ node -e '
     const promises = [];
     promises.push(mergePackage());
     [
+      "rollup.config.js",
       "client/index.html",
       "client/scripts/main.js",
       "server/index.js",
