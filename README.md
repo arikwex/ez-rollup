@@ -16,7 +16,7 @@ npm init
 nvm i 16.13.0
 ```
 Review this code and then run it in the root level of your project.
-This will only copy files in to your project and merge some required
+This will only copy files in to your project and merge some required dependencies in the package.json file.
 ```
 node -e '
   const https = require("https");
