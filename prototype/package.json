@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "scripts": {
+    "client": "npm run client:clean && npm run client:html && npm run client:js",
+    "client:dev": "npm run client:clean && npm run client:html && npm run client:js.watch",
+    "client:clean": "rm -rf build/ && mkdirp build/",
+    "client:js": "rollup -c rollup.config.js",
+    "client:js.watch": "rollup -c rollup.config.js --watch",
+    "client:html": "cp client/index.html build/index.html",
+    "server": "node server/index.js",
+    "server:dev": "nodemon server/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "express": "^4.17.1",
+    "ws": "^8.3.0"
+  },
+  "devDependencies": {
+    "mkdirp": "^1.0.4",
+    "nodemon": "^2.0.15",
+    "rollup": "^2.60.2"
+  }
+}
