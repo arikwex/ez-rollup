@@ -11,6 +11,9 @@ A quick build system for your client and server app using rollup and express. It
 ```
 cd your-project/
 npm init
+
+// When this was written, I've been using this version of node.
+nvm i 16.13.0
 ```
 Review this code and then run it in the root level of your project.
 This will only copy files in to your project and merge some required
@@ -53,6 +56,8 @@ node -e '
       "client/index.html",
       "client/scripts/main.js",
       "server/index.js",
+      "server/logger.js",
+      "server/app/router.js",
     ].forEach((file) => { promises.push(copyFile(file)); });
     await Promise.all(promises);
   }
@@ -60,3 +65,7 @@ node -e '
 '
 ```
 Finally run an `npm install` to make sure you have all the dependencies needed.
+
+
+## Why this way?
+This does not need to be a dependency in your project. This could potentially be configured via yeoman (or something similar), but I'd opted to make it a primitive and accessible as possible.
