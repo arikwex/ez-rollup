@@ -52,7 +52,7 @@ node -e '
 
   const runner = async () => {
     await mergePackage();
-    [
+    const files = [
       ".nvmrc",
       "rollup.config.js",
       "client/index.html",
@@ -60,7 +60,11 @@ node -e '
       "server/index.js",
       "server/logger.js",
       "server/app/router.js",
-    ].forEach(async (file) => { await copyFile(file); });
+      "server/app/websocket.js",
+    ];
+    for (const file of files) {
+      await copyFile(file);
+    }
   }
   runner();
 '
@@ -69,4 +73,4 @@ Finally run an `npm install` to make sure you have all the dependencies needed.
 
 
 ## Why this way?
-This does not need to be a dependency in your project. This could potentially be configured via yeoman (or something similar), but I'd opted to make it a primitive and accessible as possible.
+This does not need to be a dependency in your project. This could potentially be configured via yeoman (or something similar), but I'd opted to make it as primitive and accessible as possible.
