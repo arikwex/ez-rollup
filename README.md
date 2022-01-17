@@ -1,9 +1,20 @@
 # EZ Rollup
 
-Get started
+## What is this?
+A quick build system for your client and server app using rollup and express. It's a quick scaffolding to start writing javascript instead of thinking about project configuration. Contains:
+- Rollup.js with client code watching
+- Express app with server code watching
+- Websocket connection
+
+
+## Setup
 ```
 cd your-project/
 npm init
+```
+Review this code and then run it in the root level of your project.
+This will only copy files in to your project and merge some required
+```
 node -e '
   const https = require("https");
   const fs = require("fs");
@@ -32,6 +43,7 @@ node -e '
     const dir = path.dirname(file);
     if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); }
     fs.writeFileSync(file, fileContent);
+    console.log("(created) " + file);
   }
 
   const runner = async () => {
@@ -47,3 +59,4 @@ node -e '
   runner();
 '
 ```
+Finally run an `npm install` to make sure you have all the dependencies needed.
